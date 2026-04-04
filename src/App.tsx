@@ -208,17 +208,82 @@ const Hero = () => {
   );
 };
 
+const MaritimeService = () => {
+  return (
+    <section className="relative min-h-[600px] flex items-center overflow-hidden">
+      {/* Parallax Background Image */}
+      <div className="absolute inset-0 z-0">
+        <motion.img 
+          src="https://images.unsplash.com/photo-1494412574743-01947f155f31?auto=format&fit=crop&q=80&w=2070" 
+          alt="Carga Marítima Internacional" 
+          className="w-full h-full object-cover scale-110"
+          initial={{ y: -20 }}
+          whileInView={{ y: 20 }}
+          transition={{ duration: 10, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
+          referrerPolicy="no-referrer"
+        />
+        {/* Dark Overlay Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary/40"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-3 bg-accent/20 text-accent px-6 py-2 rounded-full font-bold mb-8 border border-accent/30 backdrop-blur-sm">
+              <Ship size={24} />
+              <span className="uppercase tracking-widest text-sm">Servicio Premium</span>
+            </div>
+            
+            <h2 className="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-tight">
+              Carga <span className="text-accent">Marítima</span> Internacional
+            </h2>
+            
+            <p className="text-xl md:text-2xl text-blue-100 mb-10 leading-relaxed font-medium">
+              Envíos de cajas y contenedores por vía marítima. La solución ideal para artículos grandes, mudanzas y carga comercial pesada desde Nueva York a toda Centroamérica.
+            </p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+              {[
+                'Tarifas más competitivas',
+                'Seguridad garantizada',
+                'Rastreo de contenedores',
+                'Asesoría en aduanas'
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3 text-white">
+                  <div className="bg-accent rounded-full p-1">
+                    <ShieldCheck size={18} />
+                  </div>
+                  <span className="font-semibold">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <motion.a 
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 bg-accent hover:bg-orange-600 text-white px-12 py-5 rounded-full font-bold text-xl transition-all shadow-2xl shadow-accent/30"
+            >
+              Cotizar Envío Marítimo <ChevronRight size={24} />
+            </motion.a>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Services = () => {
-  const services = [
-    {
-      title: 'Carga Marítima',
-      description: 'Envíos de cajas y contenedores por vía marítima. Ideal para artículos grandes y mudanzas.',
-      icon: <Anchor className="w-8 h-8" />,
-      image: 'https://images.unsplash.com/photo-1544846093-455778248bb8?auto=format&fit=crop&q=80&w=800'
-    },
+  const otherServices = [
     {
       title: 'Carga Aérea',
-      description: 'Servicio express para paquetes urgentes. Llega a su destino en tiempo récord.',
+      description: 'Servicio express para paquetes urgentes. Entrega en tiempo récord con máxima prioridad.',
       icon: <Plane className="w-8 h-8" />,
       image: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&q=80&w=800'
     },
@@ -230,14 +295,14 @@ const Services = () => {
     },
     {
       title: 'Seguro de Carga',
-      description: 'Protegemos tu inversión. Tus paquetes viajan 100% asegurados contra cualquier imprevisto.',
+      description: 'Protegemos tu inversión. Tus paquetes viajan 100% asegurados contra todo riesgo.',
       icon: <ShieldCheck className="w-8 h-8" />,
       image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800'
     }
   ];
 
   return (
-    <section id="services" className="py-24 bg-gray-50">
+    <section id="services" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2 
@@ -246,15 +311,15 @@ const Services = () => {
             viewport={{ once: true }}
             className="text-4xl font-bold text-primary mb-4"
           >
-            Nuestros Servicios Profesionales
+            Otros Servicios Logísticos
           </motion.h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Ofrecemos soluciones logísticas integrales adaptadas a tus necesidades de envío.
+            Soluciones complementarias para cubrir todas tus necesidades de transporte internacional.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {otherServices.map((service, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
@@ -262,9 +327,9 @@ const Services = () => {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ y: -10 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 group"
+              className="bg-gray-50 rounded-3xl overflow-hidden shadow-lg border border-gray-100 group flex flex-col h-full"
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-56 overflow-hidden relative">
                 <img 
                   src={service.image} 
                   alt={service.title} 
@@ -272,12 +337,12 @@ const Services = () => {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="p-6">
-                <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="bg-primary/5 w-14 h-14 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-2">{service.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <h3 className="text-2xl font-bold text-primary mb-3">{service.title}</h3>
+                <p className="text-gray-600 text-base leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -293,7 +358,7 @@ const Process = () => {
   const steps = [
     { title: 'Trae tu Paquete', desc: 'Visítanos en nuestra oficina en NY o solicita recolección.', icon: <Box /> },
     { title: 'Embalaje Seguro', desc: 'Aseguramos tu mercancía con materiales de alta calidad.', icon: <ShieldCheck /> },
-    { title: 'Transporte', desc: 'Tu envío viaja por la ruta más eficiente (Mar o Aire).', icon: <Truck /> },
+    { title: 'Transporte', desc: 'Tu envío viaja por la ruta más eficiente (Mar o Aire).', icon: <Ship /> },
     { title: 'Entrega Final', desc: 'Llevamos tu paquete hasta la puerta de su destino.', icon: <MapPin /> },
   ];
 
@@ -623,6 +688,7 @@ export default function App() {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
+      <MaritimeService />
       <Services />
       <Process />
       <BusinessHours />
