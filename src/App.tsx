@@ -48,10 +48,15 @@ const Navbar = () => {
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="flex items-center gap-2"
+              className="flex items-center gap-3"
             >
-              <div className="bg-primary p-2 rounded-lg">
-                <Ship className="text-white w-6 h-6" />
+              <div className="flex items-center -space-x-2">
+                <div className={`p-2 rounded-lg ${isScrolled ? 'bg-primary/10' : 'bg-white/20 backdrop-blur-sm'}`}>
+                  <Ship className={`w-7 h-7 ${isScrolled ? 'text-primary' : 'text-white'}`} />
+                </div>
+                <div className="p-2 rounded-lg bg-accent shadow-lg transform translate-y-2 -translate-x-1">
+                  <Plane className="w-5 h-5 text-white" />
+                </div>
               </div>
               <span className={`text-2xl font-bold tracking-tighter ${isScrolled ? 'text-primary' : 'text-white'}`}>
                 CABALLO <span className="text-accent">LLELLO</span>
@@ -209,7 +214,7 @@ const Services = () => {
       title: 'Carga Marítima',
       description: 'Envíos de cajas y contenedores por vía marítima. Ideal para artículos grandes y mudanzas.',
       icon: <Anchor className="w-8 h-8" />,
-      image: 'https://images.unsplash.com/photo-1494412574743-01947f155f31?auto=format&fit=crop&q=80&w=800'
+      image: 'https://images.unsplash.com/photo-1544846093-455778248bb8?auto=format&fit=crop&q=80&w=800'
     },
     {
       title: 'Carga Aérea',
@@ -227,7 +232,7 @@ const Services = () => {
       title: 'Seguro de Carga',
       description: 'Protegemos tu inversión. Tus paquetes viajan 100% asegurados contra cualquier imprevisto.',
       icon: <ShieldCheck className="w-8 h-8" />,
-      image: 'https://images.unsplash.com/photo-1454165833767-027ff33027ef?auto=format&fit=crop&q=80&w=800'
+      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800'
     }
   ];
 
@@ -533,8 +538,8 @@ const Contact = () => {
                 <label className="block text-sm font-bold text-gray-700 mb-2">Mensaje</label>
                 <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="¿En qué podemos ayudarte?"></textarea>
               </div>
-              <button className="w-full bg-accent hover:bg-orange-600 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-accent/20">
-                Enviar Mensaje <Send size={20} />
+              <button className="w-full bg-[#25D366] hover:bg-green-600 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-4 shadow-lg shadow-green-200">
+                Enviar por WhatsApp <MessageCircle size={36} fill="currentColor" />
               </button>
             </form>
           </div>
@@ -550,8 +555,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <Ship className="text-secondary w-8 h-8" />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center -space-x-2">
+                <Ship className="text-secondary w-8 h-8" />
+                <Plane className="text-accent w-6 h-6 transform translate-y-2" />
+              </div>
               <span className="text-3xl font-bold tracking-tighter">
                 CABALLO <span className="text-accent">LLELLO</span>
               </span>
