@@ -1,0 +1,5 @@
+{
+  "name": "Caballo Llello - Envíos Internacionales",
+  "description": "Servicios de envíos seguros y rápidos a Nicaragua y Centroamérica desde Nueva York.",
+  "requestFramePermissions": ["geolocation"]
+}
